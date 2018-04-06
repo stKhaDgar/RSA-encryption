@@ -48,29 +48,13 @@ namespace RSA_encryption
         }
 
         // Алфавит, используемый в программе
-        char[] characters = new char[] 
-        { '$', 'А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И',
+        char[] characters = new char[] { '#', 'А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И',
           'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С',
           'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ь', 'Ы', 'Ъ',
           'Э', 'Ю', 'Я', ' ', '1', '2', '3', '4', '5', '6', '7',
-          '8', '9', '0' };
+          '8', '9', '0'};
 
-        // Проверяет простое ли число
-        private bool IsTheNumberSimple(long n)
-        {
-            if (n < 2)
-                return false;
-
-            if (n == 2)
-                return true;
-
-            for (long i = 2; i < n; i++)
-                if (n % i == 0)
-                    return false;
-
-            return true;
-        }
-
+       
         // Вычисление наименьшего общего делителя 'd' (должно быть взаимно простым с параметром m)
         private long Calculate_d(long m)
         {
@@ -89,7 +73,7 @@ namespace RSA_encryption
         {
             long e = 10;
             while (true)
-            {
+            {   
                 if ((e * d) % m == 1)
                     break;
                 else
@@ -110,35 +94,28 @@ namespace RSA_encryption
                 if (IsTheNumberSimple(p) && IsTheNumberSimple(q))
                 {
                     string s = "";
-
-                    
-                    StreamReader sr = new StreamReader("Folder/in.txt");
-
+                    Encoding enc = Encoding.GetEncoding(1251);
+                    StreamReader sr = new StreamReader("Folder/in.txt" , enc);
                     while (!sr.EndOfStream)
                     {
                         s += sr.ReadLine();
+                        
                     }
-
                     sr.Close();
-
                     s = s.ToUpper();
-
+                    Console.WriteLine(s);
                     long n = p * q;
                     long m = (p - 1) * (q - 1);
                     long d = Calculate_d(m);
                     long e_ = Calculate_e(d, m);
-
                     List<string> result = RSA_Endoce(s, e_, n);
-
                     StreamWriter sw = new StreamWriter("Folder/out1.txt");
                     foreach (string item in result)
                         sw.WriteLine(item);
                     sw.Close();
-
                     textBox_d.Text = d.ToString();
                     textBox_n.Text = n.ToString();
-
-                    Process.Start("Folder/out1.txt");
+                    
                 }
                 else
                     MessageBox.Show("p или q - не простые числа!");
@@ -171,12 +148,27 @@ namespace RSA_encryption
                 StreamWriter sw = new StreamWriter("Folder/out2.txt");
                 sw.WriteLine(result);
                 sw.Close();
-
-                Process.Start("Folder/out2.txt");
+                
             }
             else
                 MessageBox.Show("Введите секретный ключ!");
         }
+
+        // Проверяет простое ли число
+        private bool IsTheNumberSimple(long n)
+        {
+            if (n < 2)
+                return false;
+
+            if (n == 2)
+                return true;
+
+            for (long i = 2; i < n; i++)
+                if (n % i == 0)
+                    return false;
+
+            return true;
+        }   
 
         // Функция для шифрования строки при помощи алгоритма RSA
         private List<string> RSA_Endoce(string s, long e, long n)
@@ -195,7 +187,6 @@ namespace RSA_encryption
                 BigInteger n_ = new BigInteger((int)n);
 
                 bi = bi % n_;
-
                 result.Add(bi.ToString());
             }
 
