@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Numerics;
+using System.IO;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace RSA_encryption
@@ -73,11 +75,7 @@ namespace RSA_encryption
             }
             return e;
         }
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         // Кнопка "Зашифровать"
         private void button1_Click(object sender, EventArgs e)
         {
@@ -123,6 +121,37 @@ namespace RSA_encryption
             }
             else
                 MessageBox.Show("Введите p и q!");
+        }
+
+        // Кнопка "Расшифровать"
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if ((textBox_d.Text.Length > 0) && (textBox_n.Text.Length > 0))
+            {
+                long d = Convert.ToInt64(textBox_d.Text);
+                long n = Convert.ToInt64(textBox_n.Text);
+
+                List<string> input = new List<string>();
+
+                StreamReader sr = new StreamReader("out1.txt");
+
+                while (!sr.EndOfStream)
+                {
+                    input.Add(sr.ReadLine());
+                }
+
+                sr.Close();
+
+                string result = RSA_Dedoce(input, d, n);
+
+                StreamWriter sw = new StreamWriter("out2.txt");
+                sw.WriteLine(result);
+                sw.Close();
+
+                Process.Start("out2.txt");
+            }
+            else
+                MessageBox.Show("Введите секретный ключ!");
         }
 
         // Функция для шифрования строки при помощи алгоритма RSA
