@@ -17,6 +17,10 @@ namespace RSA_encryption
         {
 
         }
+        public Form1()
+        {
+            InitializeComponent();
+        }
 
         // Алфавит, используемый в программе
         char[] characters = new char[] 
@@ -26,11 +30,48 @@ namespace RSA_encryption
           'Э', 'Ю', 'Я', ' ', '1', '2', '3', '4', '5', '6', '7',
           '8', '9', '0' };
 
-        public Form1()
+        // Проверяет простое ли число
+        private bool IsTheNumberSimple(long n)
         {
-            InitializeComponent();
+            if (n < 2)
+                return false;
+
+            if (n == 2)
+                return true;
+
+            for (long i = 2; i < n; i++)
+                if (n % i == 0)
+                    return false;
+
+            return true;
         }
-        
+
+        // Вычисление наименьшего общего делителя 'd' (должно быть взаимно простым с параметром m)
+        private long Calculate_d(long m)
+        {
+            long d = m - 1;
+            for (long i = 2; i <= m; i++)
+                if ((m % i == 0) && (d % i == 0)) //если имеют общие делители
+                {
+                    d--;
+                    i = 1;
+                }
+            return d;
+        }
+
+        // Функция для вычисление 'e'
+        private long Calculate_e(long d, long m)
+        {
+            long e = 10;
+            while (true)
+            {
+                if ((e * d) % m == 1)
+                    break;
+                else
+                    e++;
+            }
+            return e;
+        }
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -39,7 +80,48 @@ namespace RSA_encryption
         // Кнопка "Зашифровать"
         private void button1_Click(object sender, EventArgs e)
         {
+            if ((textBox_p.Text.Length > 0) && (textBox_q.Text.Length > 0))
+            {
+                long p = Convert.ToInt64(textBox_p.Text);
+                long q = Convert.ToInt64(textBox_q.Text);
 
+                if (IsTheNumberSimple(p) && IsTheNumberSimple(q))
+                {
+                    string s = "";
+
+                    StreamReader sr = new StreamReader("in.txt");
+
+                    while (!sr.EndOfStream)
+                    {
+                        s += sr.ReadLine();
+                    }
+
+                    sr.Close();
+
+                    s = s.ToUpper();
+
+                    long n = p * q;
+                    long m = (p - 1) * (q - 1);
+                    long d = Calculate_d(m);
+                    long e_ = Calculate_e(d, m);
+
+                    List<string> result = RSA_Endoce(s, e_, n);
+
+                    StreamWriter sw = new StreamWriter("out1.txt");
+                    foreach (string item in result)
+                        sw.WriteLine(item);
+                    sw.Close();
+
+                    textBox_d.Text = d.ToString();
+                    textBox_n.Text = n.ToString();
+
+                    Process.Start("out1.txt");
+                }
+                else
+                    MessageBox.Show("p или q - не простые числа!");
+            }
+            else
+                MessageBox.Show("Введите p и q!");
         }
     }
 }

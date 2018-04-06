@@ -30,10 +30,10 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button_Encrypt = new System.Windows.Forms.Button();
+            this.textBox_p = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox_q = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -62,22 +62,22 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Закрытый ключ";
             // 
-            // button1
+            // button_Encrypt
             // 
-            this.button1.Location = new System.Drawing.Point(67, 208);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 25);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Зашифровать";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button_Encrypt.Location = new System.Drawing.Point(67, 208);
+            this.button_Encrypt.Name = "button_Encrypt";
+            this.button_Encrypt.Size = new System.Drawing.Size(108, 25);
+            this.button_Encrypt.TabIndex = 2;
+            this.button_Encrypt.Text = "Зашифровать";
+            this.button_Encrypt.UseVisualStyleBackColor = true;
+            this.button_Encrypt.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // textBox_p
             // 
-            this.textBox1.Location = new System.Drawing.Point(63, 173);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(46, 20);
-            this.textBox1.TabIndex = 3;
+            this.textBox_p.Location = new System.Drawing.Point(63, 173);
+            this.textBox_p.Name = "textBox_p";
+            this.textBox_p.Size = new System.Drawing.Size(46, 20);
+            this.textBox_p.TabIndex = 3;
             // 
             // button2
             // 
@@ -89,12 +89,12 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // textBox2
+            // textBox_q
             // 
-            this.textBox2.Location = new System.Drawing.Point(148, 173);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(46, 20);
-            this.textBox2.TabIndex = 5;
+            this.textBox_q.Location = new System.Drawing.Point(148, 173);
+            this.textBox_q.Name = "textBox_q";
+            this.textBox_q.Size = new System.Drawing.Size(46, 20);
+            this.textBox_q.TabIndex = 5;
             // 
             // textBox3
             // 
@@ -161,10 +161,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox_q);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBox_p);
+            this.Controls.Add(this.button_Encrypt);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
@@ -179,10 +179,10 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button_Encrypt;
+        private System.Windows.Forms.TextBox textBox_p;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox_q;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label3;
