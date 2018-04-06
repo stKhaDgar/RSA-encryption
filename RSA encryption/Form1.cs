@@ -34,12 +34,19 @@ namespace RSA_encryption
                 label4.Visible = true;
                 label5.Visible = true;
                 label6.Visible = true;
+                label7.Visible = true;
+                label8.Visible = true;
+                label9.Visible = true;
                 button_Encrypt.Visible = true;
                 button_Encode.Visible = true;
+                button_Reload.Visible = true;
                 textBox_p.Visible = true;
                 textBox_q.Visible = true;
                 textBox_d.Visible = true;
                 textBox_n.Visible = true;
+                richTextBox1.Visible = true;
+                richTextBox2.Visible = true;
+                richTextBox3.Visible = true;
             }
             else
             {
@@ -52,7 +59,7 @@ namespace RSA_encryption
           'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С',
           'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ь', 'Ы', 'Ъ',
           'Э', 'Ю', 'Я', ' ', '1', '2', '3', '4', '5', '6', '7',
-          '8', '9', '0'};
+          '8', '9', '0', '\n', '\r'};
 
        
         // Вычисление наименьшего общего делителя 'd' (должно быть взаимно простым с параметром m)
@@ -93,17 +100,19 @@ namespace RSA_encryption
                 
                 if (IsTheNumberSimple(p) && IsTheNumberSimple(q))
                 {
+                    richTextBox3.Clear();
                     string s = "";
+                    
                     Encoding enc = Encoding.GetEncoding(1251);
                     StreamReader sr = new StreamReader("Folder/in.txt" , enc);
                     while (!sr.EndOfStream)
                     {
                         s += sr.ReadLine();
-                        
                     }
                     sr.Close();
                     s = s.ToUpper();
                     Console.WriteLine(s);
+                    
                     long n = p * q;
                     long m = (p - 1) * (q - 1);
                     long d = Calculate_d(m);
@@ -111,7 +120,11 @@ namespace RSA_encryption
                     List<string> result = RSA_Endoce(s, e_, n);
                     StreamWriter sw = new StreamWriter("Folder/out1.txt");
                     foreach (string item in result)
+                    {
                         sw.WriteLine(item);
+                        richTextBox3.Text += item + '\n';
+                    }
+                        
                     sw.Close();
                     textBox_d.Text = d.ToString();
                     textBox_n.Text = n.ToString();
@@ -147,6 +160,7 @@ namespace RSA_encryption
 
                 StreamWriter sw = new StreamWriter("Folder/out2.txt");
                 sw.WriteLine(result);
+                richTextBox2.Text = result;
                 sw.Close();
                 
             }
@@ -240,12 +254,19 @@ namespace RSA_encryption
                 label4.Visible = true;
                 label5.Visible = true;
                 label6.Visible = true;
+                label7.Visible = true;
+                label8.Visible = true;
+                label9.Visible = true;
                 button_Encrypt.Visible = true;
                 button_Encode.Visible = true;
+                button_Reload.Visible = true;
                 textBox_p.Visible = true;
                 textBox_q.Visible = true;
                 textBox_d.Visible = true;
                 textBox_n.Visible = true;
+                richTextBox1.Visible = true;
+                richTextBox2.Visible = true;
+                richTextBox3.Visible = true;
 
                 // Создание необходимых файлов
                 File.Create("Folder/in.txt").Close();
@@ -263,6 +284,21 @@ namespace RSA_encryption
                 DirectoryInfo dirInfo = new DirectoryInfo("Folder");
                 Directory.Delete("Folder", true);
             }
+        }
+
+        private void button_Reload_Click(object sender, EventArgs e)
+        {
+            string s = "";
+            Encoding enc = Encoding.GetEncoding(1251);
+            StreamReader sr = new StreamReader("Folder/in.txt", enc);
+            while (!sr.EndOfStream)
+            {
+                s += sr.ReadLine();
+                s += "\n";
+                Console.WriteLine(s);
+            }
+            sr.Close();
+            richTextBox1.Text = s.ToString();
         }
     }
 }
