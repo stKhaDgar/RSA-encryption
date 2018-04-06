@@ -40,6 +40,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.create_Catalog = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -150,11 +151,22 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "n:";
             // 
+            // create_Catalog
+            // 
+            this.create_Catalog.Location = new System.Drawing.Point(67, 36);
+            this.create_Catalog.Name = "create_Catalog";
+            this.create_Catalog.Size = new System.Drawing.Size(106, 51);
+            this.create_Catalog.TabIndex = 12;
+            this.create_Catalog.Text = "Открыть каталог";
+            this.create_Catalog.UseVisualStyleBackColor = true;
+            this.create_Catalog.Click += new System.EventHandler(this.create_Catalog_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.create_Catalog);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -189,6 +201,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button create_Catalog;
     }
 }
 

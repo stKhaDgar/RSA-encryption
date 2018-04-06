@@ -18,7 +18,7 @@ namespace RSA_encryption
     {
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
         public Form1()
         {
@@ -84,10 +84,12 @@ namespace RSA_encryption
                 long p = Convert.ToInt64(textBox_p.Text);
                 long q = Convert.ToInt64(textBox_q.Text);
 
+                
                 if (IsTheNumberSimple(p) && IsTheNumberSimple(q))
                 {
                     string s = "";
 
+                    
                     StreamReader sr = new StreamReader("in.txt");
 
                     while (!sr.EndOfStream)
@@ -200,6 +202,24 @@ namespace RSA_encryption
             }
 
             return result;
+        }
+
+        // Кнопка для создания каталога с необходимыми файлами
+        private void create_Catalog_Click(object sender, EventArgs e)
+        {
+            bool di = Directory.Exists("Folder");
+            if (di == true)
+            {
+                Console.WriteLine("Directory exists.");
+            }
+            else
+            {
+                Directory.CreateDirectory("Folder");
+                Console.WriteLine("Directory created.");
+            }
+            /* string curFile = @"e:\test.txt";
+            Console.WriteLine(File.Exists(curFile) ? "File exists." : "File does not exist."); 
+            */
         }
     }
 }
