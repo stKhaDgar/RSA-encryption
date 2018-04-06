@@ -43,7 +43,6 @@ namespace RSA_encryption
             }
             else
             {
-                
                 create_Catalog.Text = "Создать каталог";
             }
         }
@@ -242,6 +241,8 @@ namespace RSA_encryption
                 Directory.CreateDirectory("Folder");
                 create_Catalog.Text = "Открыть каталог";
                 Console.WriteLine("Directory created.");
+
+                // Отображение всех элементов формы
                 label1.Visible = true;
                 label2.Visible = true;
                 label3.Visible = true;
@@ -254,16 +255,35 @@ namespace RSA_encryption
                 textBox_q.Visible = true;
                 textBox_d.Visible = true;
                 textBox_n.Visible = true;
+
+                // Создание необходимых файлов
+                File.Create("Folder/in.txt").Close();
+                File.Create("Folder/out1.txt").Close();
+                File.Create("Folder/out2.txt").Close();
+                
             }
-            /* string curFile = @"e:\test.txt";
-            Console.WriteLine(File.Exists(curFile) ? "File exists." : "File does not exist."); 
-            */
         }
 
         // Удаление каталога после закрытия приложения
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Directory.Delete("Folder", true);
+            /* bool di = Directory.Exists("Folder");
+            if (di == true)
+            {
+                Directory.Delete("Folder", true);
+            }
+               */
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+            bool di = Directory.Exists("Folder");
+            if (di == true)
+            {
+                DirectoryInfo dirInfo = new DirectoryInfo("Folder");
+                Directory.Delete("Folder", true);
+            }
         }
     }
 }
