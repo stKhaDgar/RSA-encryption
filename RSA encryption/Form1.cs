@@ -18,11 +18,19 @@ namespace RSA_encryption
     {
         private void Form1_Load(object sender, EventArgs e)
         {
-            
         }
         public Form1()
         {
             InitializeComponent();
+            bool di = Directory.Exists("Folder");
+            if (di == true)
+            {
+                create_Catalog.Text = "Открыть каталог";
+            }
+            else
+            {
+                create_Catalog.Text = "Создать каталог";
+            }
         }
 
         // Алфавит, используемый в программе
@@ -210,12 +218,26 @@ namespace RSA_encryption
             bool di = Directory.Exists("Folder");
             if (di == true)
             {
+                Process.Start(new ProcessStartInfo("Folder"));
                 Console.WriteLine("Directory exists.");
             }
             else
             {
                 Directory.CreateDirectory("Folder");
+                create_Catalog.Text = "Открыть каталог";
                 Console.WriteLine("Directory created.");
+                label1.Visible = true;
+                label2.Visible = true;
+                label3.Visible = true;
+                label4.Visible = true;
+                label5.Visible = true;
+                label6.Visible = true;
+                button_Encrypt.Visible = true;
+                button_Encode.Visible = true;
+                textBox_p.Visible = true;
+                textBox_q.Visible = true;
+                textBox_d.Visible = true;
+                textBox_n.Visible = true;
             }
             /* string curFile = @"e:\test.txt";
             Console.WriteLine(File.Exists(curFile) ? "File exists." : "File does not exist."); 

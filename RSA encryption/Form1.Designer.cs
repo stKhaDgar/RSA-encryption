@@ -32,7 +32,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button_Encrypt = new System.Windows.Forms.Button();
             this.textBox_p = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.button_Encode = new System.Windows.Forms.Button();
             this.textBox_q = new System.Windows.Forms.TextBox();
             this.textBox_d = new System.Windows.Forms.TextBox();
             this.textBox_n = new System.Windows.Forms.TextBox();
@@ -52,6 +52,7 @@
             this.label1.Size = new System.Drawing.Size(109, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Простые числа";
+            this.label1.Visible = false;
             // 
             // label2
             // 
@@ -62,6 +63,7 @@
             this.label2.Size = new System.Drawing.Size(112, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Закрытый ключ";
+            this.label2.Visible = false;
             // 
             // button_Encrypt
             // 
@@ -71,6 +73,7 @@
             this.button_Encrypt.TabIndex = 2;
             this.button_Encrypt.Text = "Зашифровать";
             this.button_Encrypt.UseVisualStyleBackColor = true;
+            this.button_Encrypt.Visible = false;
             this.button_Encrypt.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox_p
@@ -79,16 +82,18 @@
             this.textBox_p.Name = "textBox_p";
             this.textBox_p.Size = new System.Drawing.Size(46, 20);
             this.textBox_p.TabIndex = 3;
+            this.textBox_p.Visible = false;
             // 
-            // button2
+            // button_Encode
             // 
-            this.button2.Location = new System.Drawing.Point(67, 349);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(106, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Расшифровать";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button_Encode.Location = new System.Drawing.Point(67, 349);
+            this.button_Encode.Name = "button_Encode";
+            this.button_Encode.Size = new System.Drawing.Size(106, 23);
+            this.button_Encode.TabIndex = 4;
+            this.button_Encode.Text = "Расшифровать";
+            this.button_Encode.UseVisualStyleBackColor = true;
+            this.button_Encode.Visible = false;
+            this.button_Encode.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBox_q
             // 
@@ -96,6 +101,7 @@
             this.textBox_q.Name = "textBox_q";
             this.textBox_q.Size = new System.Drawing.Size(46, 20);
             this.textBox_q.TabIndex = 5;
+            this.textBox_q.Visible = false;
             // 
             // textBox_d
             // 
@@ -103,6 +109,7 @@
             this.textBox_d.Name = "textBox_d";
             this.textBox_d.Size = new System.Drawing.Size(46, 20);
             this.textBox_d.TabIndex = 6;
+            this.textBox_d.Visible = false;
             // 
             // textBox_n
             // 
@@ -110,6 +117,7 @@
             this.textBox_n.Name = "textBox_n";
             this.textBox_n.Size = new System.Drawing.Size(46, 20);
             this.textBox_n.TabIndex = 7;
+            this.textBox_n.Visible = false;
             // 
             // label3
             // 
@@ -120,6 +128,7 @@
             this.label3.Size = new System.Drawing.Size(20, 17);
             this.label3.TabIndex = 8;
             this.label3.Text = "p:";
+            this.label3.Visible = false;
             // 
             // label4
             // 
@@ -130,6 +139,7 @@
             this.label4.Size = new System.Drawing.Size(20, 17);
             this.label4.TabIndex = 9;
             this.label4.Text = "q:";
+            this.label4.Visible = false;
             // 
             // label5
             // 
@@ -140,6 +150,7 @@
             this.label5.Size = new System.Drawing.Size(20, 17);
             this.label5.TabIndex = 10;
             this.label5.Text = "d:";
+            this.label5.Visible = false;
             // 
             // label6
             // 
@@ -150,6 +161,7 @@
             this.label6.Size = new System.Drawing.Size(20, 17);
             this.label6.TabIndex = 11;
             this.label6.Text = "n:";
+            this.label6.Visible = false;
             // 
             // create_Catalog
             // 
@@ -174,7 +186,7 @@
             this.Controls.Add(this.textBox_n);
             this.Controls.Add(this.textBox_d);
             this.Controls.Add(this.textBox_q);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button_Encode);
             this.Controls.Add(this.textBox_p);
             this.Controls.Add(this.button_Encrypt);
             this.Controls.Add(this.label2);
@@ -193,7 +205,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button_Encrypt;
         private System.Windows.Forms.TextBox textBox_p;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button_Encode;
         private System.Windows.Forms.TextBox textBox_q;
         private System.Windows.Forms.TextBox textBox_d;
         private System.Windows.Forms.TextBox textBox_n;
