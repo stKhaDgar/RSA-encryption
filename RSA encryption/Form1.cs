@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Numerics;
 using System.Windows.Forms;
 
 namespace RSA_encryption
@@ -122,6 +123,30 @@ namespace RSA_encryption
             }
             else
                 MessageBox.Show("Введите p и q!");
+        }
+
+        // Функция для шифрования строки при помощи алгоритма RSA
+        private List<string> RSA_Endoce(string s, long e, long n)
+        {
+            List<string> result = new List<string>();
+
+            BigInteger bi;
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                int index = Array.IndexOf(characters, s[i]);
+
+                bi = new BigInteger(index);
+                bi = BigInteger.Pow(bi, (int)e);
+
+                BigInteger n_ = new BigInteger((int)n);
+
+                bi = bi % n_;
+
+                result.Add(bi.ToString());
+            }
+
+            return result;
         }
     }
 }
