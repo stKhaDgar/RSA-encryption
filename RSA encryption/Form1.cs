@@ -112,7 +112,7 @@ namespace RSA_encryption
                     string s = "";
 
                     
-                    StreamReader sr = new StreamReader("in.txt");
+                    StreamReader sr = new StreamReader("Folder/in.txt");
 
                     while (!sr.EndOfStream)
                     {
@@ -130,7 +130,7 @@ namespace RSA_encryption
 
                     List<string> result = RSA_Endoce(s, e_, n);
 
-                    StreamWriter sw = new StreamWriter("out1.txt");
+                    StreamWriter sw = new StreamWriter("Folder/out1.txt");
                     foreach (string item in result)
                         sw.WriteLine(item);
                     sw.Close();
@@ -138,7 +138,7 @@ namespace RSA_encryption
                     textBox_d.Text = d.ToString();
                     textBox_n.Text = n.ToString();
 
-                    Process.Start("out1.txt");
+                    Process.Start("Folder/out1.txt");
                 }
                 else
                     MessageBox.Show("p или q - не простые числа!");
@@ -157,7 +157,7 @@ namespace RSA_encryption
 
                 List<string> input = new List<string>();
 
-                StreamReader sr = new StreamReader("out1.txt");
+                StreamReader sr = new StreamReader("Folder/out1.txt");
 
                 while (!sr.EndOfStream)
                 {
@@ -168,11 +168,11 @@ namespace RSA_encryption
 
                 string result = RSA_Dedoce(input, d, n);
 
-                StreamWriter sw = new StreamWriter("out2.txt");
+                StreamWriter sw = new StreamWriter("Folder/out2.txt");
                 sw.WriteLine(result);
                 sw.Close();
 
-                Process.Start("out2.txt");
+                Process.Start("Folder/out2.txt");
             }
             else
                 MessageBox.Show("Введите секретный ключ!");
@@ -260,24 +260,12 @@ namespace RSA_encryption
                 File.Create("Folder/in.txt").Close();
                 File.Create("Folder/out1.txt").Close();
                 File.Create("Folder/out2.txt").Close();
-                
             }
         }
 
-        // Удаление каталога после закрытия приложения
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            /* bool di = Directory.Exists("Folder");
-            if (di == true)
-            {
-                Directory.Delete("Folder", true);
-            }
-               */
-        }
-
+        // Удаление каталога при завершении программы
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
             bool di = Directory.Exists("Folder");
             if (di == true)
             {
