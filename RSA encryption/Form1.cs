@@ -19,6 +19,8 @@ namespace RSA_encryption
         private void Form1_Load(object sender, EventArgs e)
         {
         }
+
+        // Проверка на наличие каталога
         public Form1()
         {
             InitializeComponent();
@@ -26,9 +28,22 @@ namespace RSA_encryption
             if (di == true)
             {
                 create_Catalog.Text = "Открыть каталог";
+                label1.Visible = true;
+                label2.Visible = true;
+                label3.Visible = true;
+                label4.Visible = true;
+                label5.Visible = true;
+                label6.Visible = true;
+                button_Encrypt.Visible = true;
+                button_Encode.Visible = true;
+                textBox_p.Visible = true;
+                textBox_q.Visible = true;
+                textBox_d.Visible = true;
+                textBox_n.Visible = true;
             }
             else
             {
+                
                 create_Catalog.Text = "Создать каталог";
             }
         }
@@ -223,6 +238,7 @@ namespace RSA_encryption
             }
             else
             {
+                MessageBox.Show("Каталог создан");
                 Directory.CreateDirectory("Folder");
                 create_Catalog.Text = "Открыть каталог";
                 Console.WriteLine("Directory created.");
