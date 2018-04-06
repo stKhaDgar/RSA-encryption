@@ -259,5 +259,11 @@ namespace RSA_encryption
             Console.WriteLine(File.Exists(curFile) ? "File exists." : "File does not exist."); 
             */
         }
+
+        // Удаление каталога после закрытия приложения
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Directory.Delete("Folder", true);
+        }
     }
 }
